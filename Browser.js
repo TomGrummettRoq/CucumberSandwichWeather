@@ -56,39 +56,47 @@ class Browser {
         element.click();
     }
 
+    
     /**
      * Returns color of specified element as a string in the format:
      * 'rgba(<red>, <green>, <blue>, <alpha transparency>)'
-     */
-    async elementColor(id) {
-        const element = await this.getElement(id);
-        return await element.getCssValue('color');
+    */
+   async elementColor(id) {
+       const element = await this.getElement(id);
+       return await element.getCssValue('color');
     }
 
+    
     /**
      * Emulates hovering the mouse over the element of the specified id
-     */
-    async elementHover(id) {
-        const element = await this.getElement(id);
-        const actions = this.headless.actions({async: true});
-        await actions.move({origin: element}).perform();
+    */
+   async elementHover(id) {
+       const element = await this.getElement(id);
+       const actions = this.headless.actions({async: true});
+       await actions.move({origin: element}).perform();
     }
-
+    
     /**
      * Convienience method for retrieving headless element by id
-     */
-    async getElement(id) {
-        const selector = webdriver.By.id(id);
-        return await this.headless.findElement(selector);
+    */
+   async getElement(id) {
+       const selector = webdriver.By.id(id);
+       return await this.headless.findElement(selector);
     }
-
+    
     /**
      * Convienience method for retrieving headless element by CSS
-     */
-    async getElementByCss(css) {
-        const selector = webdriver.By.css(css);
-        return await this.headless.findElement(selector);
+    */
+   async getElementByCss(css) {
+       const selector = webdriver.By.css(css);
+       return await this.headless.findElement(selector);
     }
+    
+    // Function to find the fill colour of an element - used for website logos etc
+    async elementFillColorCss(css) {
+    const element = await this.getElementByCss(css);
+       return await element.getCssValue('fill');
+     }
     
     /**
      * To know when a page has loaded, it's useful to wait for an element to exist

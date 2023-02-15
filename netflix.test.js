@@ -52,3 +52,34 @@ test('Test FAQ response', async() => {
     await element.click();
     expect(browser.waitForElementByCss('.faq-answer.open'));
 });
+
+test('login with false email', async() => {
+    const emailAddress = 'thomas@homtial.co.org';
+
+    const loginField = await browser.getElementByCss('.input_id');
+    const loginButton = await browser.getElementByCss('.cta-btn-txt');    
+
+    await loginField.sendKeys(emailAddress);
+    await loginButton.click();
+    
+    expect(browser.waitForElementByCss('.stepTitle'));
+});
+
+
+// Attempted test to confirm colour of Netflix Logo on the home page however every iteration of the test
+// returned an rgba colour list that corresponds to a different, unrequested element on the page. I've confirmed
+// that the CSS tags are correct however the returned colours are always incorrect. I discovered that the Netflix
+// is comprised of images that used a 'fill' colour so I used a 'find fill colour by css' function.
+
+
+test('confirm colour scheme', async() => {
+    await browser.waitForElementByCss('svg.svg-icon.svg-icon-netflix-logo');
+    const elementColour = await browser.elementFillColorCss('.screen-reader-text');
+    
+    expect(elementColour).toBe('rgb(229, 9, 20)'); 
+});
+
+
+// const elementColour = await browser.elementColor('netflix-logo')
+// const element = await browser.getElementByCss('.svg-icon.svg-icon-netflix-logo');
+// const elementColour = await browser.elementColorCss('.svg-icon.svg-icon-netflix-logo > g');

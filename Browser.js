@@ -29,6 +29,7 @@ class Browser {
     /**
      * Simply returns true if 'headless' chrome browser built
      */
+
     browserBuilt() {
         return (this.headless != null) ? true : false;
     }
@@ -36,6 +37,7 @@ class Browser {
     /**
      * Emulates closing the 'headless' Chrome browser
      */
+
     async browserExit() {
         await this.headless.quit();
         this.headless = null;
@@ -44,6 +46,7 @@ class Browser {
     /**
      * Navigates to specified URL in the 'headless' Chrome browser
      */
+    
     async browserNavigate(url) {
         await this.headless.get(url);
     }

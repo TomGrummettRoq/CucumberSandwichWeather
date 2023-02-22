@@ -1,4 +1,3 @@
-
 const Browser = require("./Browser");
 const browser = new Browser();
 const timeout = 20000;
@@ -69,7 +68,7 @@ test('login with false email', async() => {
 // Attempted test to confirm colour of Netflix Logo on the home page however every iteration of the test
 // returned an rgba colour list that corresponds to a different, unrequested element on the page. I've confirmed
 // that the CSS tags are correct however the returned colours are always incorrect. I discovered that the Netflix
-// is comprised of images that used a 'fill' colour so I used a 'find fill colour by css' function.
+// is comprised of images that used a 'fill' colour so I created a 'find fill colour by css' function.
 
 
 test('confirm colour scheme', async() => {
